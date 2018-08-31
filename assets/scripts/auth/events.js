@@ -8,7 +8,7 @@ const onSignIn = function (e) {
   e.preventDefault()
   const data = getFormFields(e.target)
   api.signIn(data)
-    .then(ui.OnSignInSuccess)
+    .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
 }
 
