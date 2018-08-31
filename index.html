@@ -13,5 +13,25 @@
     </head>
     <body>
       <h1>Wine Collector Client</h1>
+      <div id="wines"></div>
+      <form id="sign-in">
+        <input type="email" name="credentials[email]" placeholder="Email Address"/>
+        <input type="password" name="credentials[password]" placeholder="Password"/>
+        <button type="submit">Sign In</button>
+      </form>
+      <form id="sign-up">
+        <input type="email" name="credentials[email]" placeholder="Email Address"/>
+        <input type="password" name="credentials[password]" placeholder="Password"/>
+        <input type="password" name="credentials[password_confirmation]" placeholder="Password"/>
+        <button type="submit">Sign Up</button>
+      </form>
+      <form id="change-password">
+        <input type="password" name="passwords[old]" placeholder="Old Password"/>
+        <input type="password" name="passwords[new]" placeholder=" New Password"/>
+        <button type="submit">Change Password</button>
+      </form>
+      <form id="sign-out">
+        <button type="submit">Sign Out</button>
+      </form>
     </body>
 </html>
