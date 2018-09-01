@@ -6,7 +6,6 @@ const getFormFields = require('../../../lib/get-form-fields')
 
 const onShowAllWines = function (e) {
   e.preventDefault()
-  console.log('onShowAllWines')
   api.index()
     .then(ui.onShowAllWinesSuccess)
     .catch(ui.onShowAllWinesFailure)
@@ -14,9 +13,7 @@ const onShowAllWines = function (e) {
 
 const onShowWine = function (e) {
   e.preventDefault()
-  console.log('onShowWine')
   const id = getFormFields(e.target).id
-  console.log(id)
   api.show(id)
     .then(ui.onShowWineSuccess)
     .catch(ui.onShowWineFailure)
@@ -24,18 +21,25 @@ const onShowWine = function (e) {
 
 const onUpdateWine = function (e) {
   e.preventDefault()
-  console.log('onUpdateWine')
   const data = getFormFields(e.target)
-  console.log(data)
   api.update(data)
     .then(ui.onUpdateWineSuccess)
     .catch(ui.onUpdateWineFailure)
+}
+
+const onDeleteWine = function (e) {
+  e.preventDefault()
+  const id = getFormFields(e.target).id
+  api.destroy(id)
+    .then(ui.onDestroyWineSuccess)
+    .catch(ui.onDestroyWineFailure)
 }
 
 const addHandlers = function () {
   $('#wines-index').on('click', onShowAllWines)
   $('#wines-show').on('submit', onShowWine)
   $('#wines-update').on('submit', onUpdateWine)
+  $('#wines-delete').on('submit', onDeleteWine)
 }
 
 module.exports = {

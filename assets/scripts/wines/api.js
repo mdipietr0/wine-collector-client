@@ -34,8 +34,19 @@ const update = function (data) {
   })
 }
 
+const destroy = function (id) {
+  return $.ajax({
+    method: 'DELETE',
+    url: apiUrl + '/wines/' + id,
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   index,
   show,
-  update
+  update,
+  destroy
 }

@@ -50,11 +50,30 @@ const onUpdateWineFailure = function () {
   console.log('onUpdateWineFailure')
 }
 
+const onDestroyWineSuccess = function (response) {
+  console.log(response)
+  let html = '<ul>'
+  html += '<li>Wine has been successfully deleted</li>'
+  html += '</ul>'
+  $('#wines').html(html)
+  console.log('onDestroyWineSuccess')
+}
+
+const onDestroyWineFailure = function () {
+  let html = '<ul>'
+  html += '<li>Wine does not exits or was not deleted successfully.</li>'
+  html += '</ul>'
+  $('#wines').html(html)
+  console.log('onDestroyWineFailure')
+}
+
 module.exports = {
   onShowAllWinesSuccess,
   onShowAllWinesFailure,
   onShowWineSuccess,
   onShowWineFailure,
   onUpdateWineSuccess,
-  onUpdateWineFailure
+  onUpdateWineFailure,
+  onDestroyWineSuccess,
+  onDestroyWineFailure
 }
