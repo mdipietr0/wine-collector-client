@@ -23,6 +23,7 @@ const onShowWineSuccess = function (response) {
   html += '</ul>'
   $('#wines').html(html)
   console.log('onShowWineSuccess')
+  $('#wines-show input').val('')
 }
 
 const onShowWineFailure = function () {
@@ -31,6 +32,7 @@ const onShowWineFailure = function () {
   html += '</ul>'
   $('#wines').html(html)
   console.log('onShowWineFailure')
+  $('#wines-show input').val('')
 }
 
 const onCreateWineSuccess = function (response) {
@@ -40,6 +42,7 @@ const onCreateWineSuccess = function (response) {
   html += '</ul>'
   $('#wines').html(html)
   console.log('onCreateWineSuccess')
+  $('#wines-create input').val('')
 }
 
 const onCreateWineFailure = function () {
@@ -48,6 +51,7 @@ const onCreateWineFailure = function () {
   html += '</ul>'
   $('#wines').html(html)
   console.log('onCreateWineFailure')
+  $('#wines-create input').val('')
 }
 
 const onUpdateWineSuccess = function (response) {
@@ -57,6 +61,7 @@ const onUpdateWineSuccess = function (response) {
   html += '</ul>'
   $('#wines').html(html)
   console.log('onUpdateWineSuccess')
+  $('#wines-update input').val('')
 }
 
 const onUpdateWineFailure = function () {
@@ -65,6 +70,7 @@ const onUpdateWineFailure = function () {
   html += '</ul>'
   $('#wines').html(html)
   console.log('onUpdateWineFailure')
+  $('#wines-update input').val('')
 }
 
 const onDestroyWineSuccess = function (response) {
@@ -74,6 +80,7 @@ const onDestroyWineSuccess = function (response) {
   html += '</ul>'
   $('#wines').html(html)
   console.log('onDestroyWineSuccess')
+  $('#wines-destroy input').val('')
 }
 
 const onDestroyWineFailure = function () {
@@ -82,6 +89,7 @@ const onDestroyWineFailure = function () {
   html += '</ul>'
   $('#wines').html(html)
   console.log('onDestroyWineFailure')
+  $('#wines-delete input').val('')
 }
 
 module.exports = {
