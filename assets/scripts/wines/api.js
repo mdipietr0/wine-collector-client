@@ -13,6 +13,16 @@ const index = function () {
   })
 }
 
+const indexByColor = function (color) {
+  return $.ajax({
+    method: 'GET',
+    url: apiUrl + '/wines?color=' + color,
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
 const show = function (id) {
   return $.ajax({
     method: 'GET',
@@ -57,6 +67,7 @@ const destroy = function (id) {
 
 module.exports = {
   index,
+  indexByColor,
   show,
   create,
   update,

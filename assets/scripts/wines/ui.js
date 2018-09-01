@@ -3,10 +3,12 @@
 const onShowAllWinesSuccess = function (response) {
   console.log(response)
   let html = '<ul>'
-  response.forEach(wine => {
-    console.log(wine.name)
-    html += '<li>' + wine.name + '</li>'
-  })
+  if (response.length > 0) {
+    response.forEach(wine => {
+      console.log(wine.name)
+      html += '<li>' + wine.name + '</li>'
+    })
+  }
   html += '</ul>'
   $('#wines').html(html)
   console.log('onShowAllWinesSuccess')
