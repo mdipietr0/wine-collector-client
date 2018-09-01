@@ -22,9 +22,20 @@ const onShowWine = function (e) {
     .catch(ui.onShowWineFailure)
 }
 
+const onUpdateWine = function (e) {
+  e.preventDefault()
+  console.log('onUpdateWine')
+  const data = getFormFields(e.target)
+  console.log(data)
+  api.update(data)
+    .then(ui.onUpdateWineSuccess)
+    .catch(ui.onUpdateWineFailure)
+}
+
 const addHandlers = function () {
   $('#wines-index').on('click', onShowAllWines)
   $('#wines-show').on('submit', onShowWine)
+  $('#wines-update').on('submit', onUpdateWine)
 }
 
 module.exports = {

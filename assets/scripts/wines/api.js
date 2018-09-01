@@ -23,7 +23,19 @@ const show = function (id) {
   })
 }
 
+const update = function (data) {
+  return $.ajax({
+    data,
+    method: 'PATCH',
+    url: apiUrl + '/wines/' + data.id,
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   index,
-  show
+  show,
+  update
 }

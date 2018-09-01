@@ -33,9 +33,28 @@ const onShowWineFailure = function () {
   console.log('onShowWineFailure')
 }
 
+const onUpdateWineSuccess = function (response) {
+  console.log(response)
+  let html = '<ul>'
+  html += '<li>' + response.name + '</li>'
+  html += '</ul>'
+  $('#wines').html(html)
+  console.log('onUpdateWineSuccess')
+}
+
+const onUpdateWineFailure = function () {
+  let html = '<ul>'
+  html += '<li>Wine does not exits or is not owned by current user.</li>'
+  html += '</ul>'
+  $('#wines').html(html)
+  console.log('onUpdateWineFailure')
+}
+
 module.exports = {
   onShowAllWinesSuccess,
   onShowAllWinesFailure,
   onShowWineSuccess,
-  onShowWineFailure
+  onShowWineFailure,
+  onUpdateWineSuccess,
+  onUpdateWineFailure
 }
