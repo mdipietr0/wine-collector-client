@@ -33,6 +33,23 @@ const onShowWineFailure = function () {
   console.log('onShowWineFailure')
 }
 
+const onCreateWineSuccess = function (response) {
+  console.log(response)
+  let html = '<ul>'
+  html += '<li>' + response.name + '</li>'
+  html += '</ul>'
+  $('#wines').html(html)
+  console.log('onCreateWineSuccess')
+}
+
+const onCreateWineFailure = function () {
+  let html = '<ul>'
+  html += '<li>Wine creation failed.</li>'
+  html += '</ul>'
+  $('#wines').html(html)
+  console.log('onCreateWineFailure')
+}
+
 const onUpdateWineSuccess = function (response) {
   console.log(response)
   let html = '<ul>'
@@ -75,5 +92,7 @@ module.exports = {
   onUpdateWineSuccess,
   onUpdateWineFailure,
   onDestroyWineSuccess,
-  onDestroyWineFailure
+  onDestroyWineFailure,
+  onCreateWineSuccess,
+  onCreateWineFailure
 }

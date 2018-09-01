@@ -19,6 +19,14 @@ const onShowWine = function (e) {
     .catch(ui.onShowWineFailure)
 }
 
+const onCreateWine = function (e) {
+  e.preventDefault()
+  const data = getFormFields(e.target)
+  api.create(data)
+    .then(ui.onCreateWineSuccess)
+    .catch(ui.onCreateWineFailure)
+}
+
 const onUpdateWine = function (e) {
   e.preventDefault()
   const data = getFormFields(e.target)
@@ -38,6 +46,7 @@ const onDeleteWine = function (e) {
 const addHandlers = function () {
   $('#wines-index').on('click', onShowAllWines)
   $('#wines-show').on('submit', onShowWine)
+  $('#wines-create').on('submit', onCreateWine)
   $('#wines-update').on('submit', onUpdateWine)
   $('#wines-delete').on('submit', onDeleteWine)
 }

@@ -23,6 +23,17 @@ const show = function (id) {
   })
 }
 
+const create = function (data) {
+  return $.ajax({
+    data,
+    method: 'POST',
+    url: apiUrl + '/wines',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
 const update = function (data) {
   return $.ajax({
     data,
@@ -47,6 +58,7 @@ const destroy = function (id) {
 module.exports = {
   index,
   show,
+  create,
   update,
   destroy
 }
