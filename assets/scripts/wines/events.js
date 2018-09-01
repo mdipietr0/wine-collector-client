@@ -11,6 +11,15 @@ const onShowAllWines = function (e) {
     .catch(ui.onShowAllWinesFailure)
 }
 
+const onShowWinesByColor = function (e) {
+  e.preventDefault()
+  const color = getFormFields(e.target).color
+  console.log(color)
+  api.indexByColor(color)
+    .then(ui.onShowAllWinesSuccess)
+    .catch(ui.onShowAllWinesFailure)
+}
+
 const onShowWine = function (e) {
   e.preventDefault()
   const id = getFormFields(e.target).id
@@ -45,6 +54,9 @@ const onDeleteWine = function (e) {
 
 const addHandlers = function () {
   $('#wines-index').on('click', onShowAllWines)
+  $('#wines-index-red').on('submit', onShowWinesByColor)
+  $('#wines-index-white').on('submit', onShowWinesByColor)
+  $('#wines-index-rose').on('submit', onShowWinesByColor)
   $('#wines-show').on('submit', onShowWine)
   $('#wines-create').on('submit', onCreateWine)
   $('#wines-update').on('submit', onUpdateWine)
