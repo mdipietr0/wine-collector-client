@@ -103,6 +103,9 @@ $('#wines-index').addClass('d-none')
 $('#wines-index-red').addClass('d-none')
 $('#wines-index-white').addClass('d-none')
 $('#wines-index-rose').addClass('d-none')
+$('#container-wines-create').addClass('d-none')
+$('#container-wines-update').addClass('d-none')
+$('#container-wines-delete').addClass('d-none')
 
 module.exports = {
   onShowAllWinesSuccess,

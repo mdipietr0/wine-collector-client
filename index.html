@@ -58,46 +58,104 @@
         </form>
       </div>
     </div>
-  </div>
-
-  <div id="container-change-password" class="container col-md-6 py-3 container-change-password">
-    <form id="change-password">
-      <div class="form-group">
-        <input type="password" class="form-control" name="passwords[old]" placeholder="Old Password"/>
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" name="passwords[new]" placeholder="New Password"/>
-      </div>
-      <button type="submit" class="btn btn-primary">Change</button>
-    </form>
-  </div>
-  <div id="container-wines-index">
-    <div id="container-wines-index-buttons">
-      <button id="wines-index" class="btn btn-primary btn-wines-index">Show all wines</button>
-
-      <form id="wines-index-red">
+    <div id="container-change-password" class="container col-md-6 py-3 container-change-password">
+      <form id="change-password">
         <div class="form-group">
-          <input hidden value='Red' class="form-control" type="text" name="color"/>
+          <input type="password" class="form-control" name="passwords[old]" placeholder="Old Password"/>
         </div>
-        <button type="submit" class="btn btn-primary btn-wines-index">Show Red Wine</button>
-      </form>
-
-      <form id="wines-index-white">
         <div class="form-group">
-          <input hidden value='White' class="form-control" type="text" name="color"/>
+          <input type="password" class="form-control" name="passwords[new]" placeholder="New Password"/>
         </div>
-        <button type="submit" class="btn btn-primary btn-wines-index">Show White Wine</button>
-      </form>
-
-      <form id="wines-index-rose">
-        <div class="form-group">
-          <input hidden value='Rose' class="form-control" type="text" name="color"/>
-        </div>
-        <button type="submit" class="btn btn-primary btn-wines-index">Show Rose Wine</button>
+        <button type="submit" class="btn btn-primary">Change</button>
       </form>
     </div>
-    <div class="box-wines mx-auto" id="wines"></div>
-    <div class="mx-auto" id="wine"></div>
+    <div id="container-wines-index">
+      <div id="container-wines-index-buttons">
+        <button id="wines-index" class="btn btn-primary btn-wines-index">Show all wines</button>
+
+        <form id="wines-index-red">
+          <div class="form-group">
+            <input hidden value='Red' class="form-control" type="text" name="color"/>
+          </div>
+          <button type="submit" class="btn btn-primary btn-wines-index">Show Red Wine</button>
+        </form>
+
+        <form id="wines-index-white">
+          <div class="form-group">
+            <input hidden value='White' class="form-control" type="text" name="color"/>
+          </div>
+          <button type="submit" class="btn btn-primary btn-wines-index">Show White Wine</button>
+        </form>
+
+        <form id="wines-index-rose">
+          <div class="form-group">
+            <input hidden value='Rose' class="form-control" type="text" name="color"/>
+          </div>
+          <button type="submit" class="btn btn-primary btn-wines-index">Show Rose Wine</button>
+        </form>
+      </div>
+      <div class="box-wines mx-auto" id="wines"></div>
+      <div class="mx-auto" id="wine"></div>
+    </div>
+    <div id="container-wines-create">
+      <div class="container col-md-6 py-3">
+        <form id="wines-create">
+          <div class="form-group">
+            <input type="text" class="form-control" name="wine[producer]" placeholder="Producer"/>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="wine[name]" placeholder="Name"/>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="wine[country]" placeholder="Country"/>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="wine[region]" placeholder="Region"/>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="wine[color]" placeholder="Color"/>
+          </div>
+          <button type="submit" class="btn btn-primary btn-wines-create">Create Wine</button>
+        </form>
+      </div>
+    </div>
+    <div id="container-wines-update">
+      <div class="container col-md-6 py-3">
+        <form id="wines-update">
+          <div class="form-group">
+            <input type="text" class="form-control" name="id" placeholder="Id"/>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="wine[producer]" placeholder="Producer"/>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="wine[name]" placeholder="Name"/>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="wine[country]" placeholder="Country"/>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="wine[region]" placeholder="Region"/>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="wine[color]" placeholder="Color"/>
+          </div>
+          <button type="submit" class="btn btn-primary btn-wines-create">Update Wine</button>
+        </form>
+      </div>
+    </div>
+    <div id="container-wines-delete">
+      <div class="container col-md-6 py-3">
+        <form id="wines-delete">
+          <div class="form-group">
+            <input type="text" class="form-control" name="id" placeholder="Id"/>
+          </div>
+          <button type="submit" class="btn btn-primary btn-wines-create">Delete Wine</button>
+        </form>
+      </div>
+    </div>
   </div>
+
+
 </body>
 </html>
