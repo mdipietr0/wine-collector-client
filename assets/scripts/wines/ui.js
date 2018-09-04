@@ -1,6 +1,7 @@
 'use strict'
 
 const showWinesTemplate = require('../templates/wine-listing.handlebars')
+const showWineTemplate = require('../templates/wine-listing-single.handlebars')
 
 const onShowAllWinesSuccess = function (response) {
   console.log(response)
@@ -23,11 +24,12 @@ const onShowAllWinesFailure = function () {
 
 const onShowWineSuccess = function (response) {
   console.log(response)
-  let html = '<ul>'
-  html += '<li>' + response.name + '</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onShowWineSuccess')
+  // let html = '<ul>'
+  // html += '<li>' + response.name + '</li>'
+  // html += '</ul>'
+  $('#wines').addClass('d-none')
+  const showWineHtml = showWineTemplate({ wine: response })
+  $('#wine').html(showWineHtml)
   $('#wines-show input').val('')
 }
 

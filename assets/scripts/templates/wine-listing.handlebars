@@ -2,9 +2,9 @@
   {{log wine}}
 
 <a href="#">
-  <div class="card card-wine" style="width: 18rem;">
+  <div data-id="{{wine.id}}" class="card card-wine" style="width: 18rem;">
     <img class="card-img-top" src="https://organicwineexchange.com/wp-content/uploads/2013/01/Square-Red-Wine-Bottle-.jpg" alt="Card image cap">
-    <div data-id="{{wine.id}}" class="card-body">
+    <div class="card-body">
       <h5 class="card-title">Producer: {{wine.producer}}</h5>
       <h6 class="card-text">Name: {{wine.name}}</h6>
       {{#if wine.name}}

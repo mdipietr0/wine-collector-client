@@ -54,11 +54,12 @@ const onDeleteWine = function (e) {
 
 const onClickWineCard = function (e) {
   e.preventDefault()
-  console.log('wine clicked')
-  console.log(e.target)
-  // hide all wines
-  $('#wines').addClass('d-none')
-  // display single wine
+  const wineId = $(e.target).parent().attr('data-id')
+  api.show(wineId)
+    .then(ui.onShowWineSuccess)
+    .catch(ui.onShowWineFailure)
+  api.index(wineId)
+    .then(ui.onShow)
 }
 
 const onWinesIndexBtn = function () {
