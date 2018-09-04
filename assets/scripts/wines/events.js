@@ -52,6 +52,19 @@ const onDeleteWine = function (e) {
     .catch(ui.onDestroyWineFailure)
 }
 
+const onClickWineCard = function (e) {
+  e.preventDefault()
+  console.log('wine clicked')
+  console.log(e.target)
+  // hide all wines
+  $('#wines').addClass('d-none')
+  // display single wine
+}
+
+const onWinesIndexBtn = function () {
+  $('#container-wines-index-buttons').addClass('d-none')
+}
+
 const addHandlers = function () {
   $('#wines-index').on('click', onShowAllWines)
   $('#wines-index-red').on('submit', onShowWinesByColor)
@@ -61,6 +74,8 @@ const addHandlers = function () {
   $('#wines-create').on('submit', onCreateWine)
   $('#wines-update').on('submit', onUpdateWine)
   $('#wines-delete').on('submit', onDeleteWine)
+  $('#wines').on('click', 'a', onClickWineCard)
+  $('.btn-wines-index').on('click', onWinesIndexBtn)
 }
 
 module.exports = {

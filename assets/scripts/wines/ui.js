@@ -1,16 +1,19 @@
 'use strict'
 
+const showWinesTemplate = require('../templates/wine-listing.handlebars')
+
 const onShowAllWinesSuccess = function (response) {
   console.log(response)
-  let html = '<ul>'
-  if (response.length > 0) {
-    response.forEach(wine => {
-      console.log(wine.name)
-      html += '<li>' + wine.name + '</li>'
-    })
-  }
-  html += '</ul>'
-  $('#wines').html(html)
+  // let html = '<ul>'
+  // if (response.length > 0) {
+  //   response.forEach(wine => {
+  //     console.log(wine.name)
+  //     html += '<li>' + wine.name + '</li>'
+  //   })
+  // }
+  // html += '</ul>'
+  const showWinesHtml = showWinesTemplate({ wines: response })
+  $('#wines').html(showWinesHtml)
   console.log('onShowAllWinesSuccess')
 }
 
