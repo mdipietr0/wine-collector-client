@@ -7,6 +7,10 @@ const onSignInSuccess = function (response) {
   $('#sign-in input').val('')
   $('#container-sign-up-in').addClass('d-none')
   $('#navbar').removeClass('d-none')
+  $('#wines-index').removeClass('d-none')
+  $('#wines-index-red').removeClass('d-none')
+  $('#wines-index-white').removeClass('d-none')
+  $('#wines-index-rose').removeClass('d-none')
 }
 
 const onSignInFailure = function () {

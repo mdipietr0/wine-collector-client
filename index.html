@@ -71,5 +71,30 @@
         <button type="submit" class="btn btn-primary">Change</button>
       </form>
   </div>
+
+  <button id="wines-index" class="btn btn-primary">Show all wines</button>
+
+  <form id="wines-index-red">
+    <div class="form-group">
+      <input hidden value='Red' class="form-control" type="text" name="color"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Show Red Wine</button>
+  </form>
+
+  <form id="wines-index-white">
+    <div class="form-group">
+      <input hidden value='White' class="form-control" type="text" name="color"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Show White Wine</button>
+  </form>
+
+  <form id="wines-index-rose">
+    <div class="form-group">
+      <input hidden value='Rose' class="form-control" type="text" name="color"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Show Rose Wine</button>
+  </form>
+
+  <div id="wines"></div>
 </body>
 </html>

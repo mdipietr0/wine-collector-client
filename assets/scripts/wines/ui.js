@@ -94,6 +94,11 @@ const onDestroyWineFailure = function () {
   $('#wines-delete input').val('')
 }
 
+$('#wines-index').addClass('d-none')
+$('#wines-index-red').addClass('d-none')
+$('#wines-index-white').addClass('d-none')
+$('#wines-index-rose').addClass('d-none')
+
 module.exports = {
   onShowAllWinesSuccess,
   onShowAllWinesFailure,
