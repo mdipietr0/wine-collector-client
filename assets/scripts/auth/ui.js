@@ -5,6 +5,8 @@ const store = require('../store')
 const onSignInSuccess = function (response) {
   store.user = response.user
   $('#sign-in input').val('')
+  $('#container-sign-up-in').addClass('d-none')
+  $('#navbar').removeClass('d-none')
 }
 
 const onSignInFailure = function () {
@@ -24,6 +26,7 @@ const onSignUpFailure = function () {
 
 const onChangePasswordSuccess = function () {
   console.log('api.changePassword success')
+  $('#container-change-password').addClass('d-none')
   $('#change-password input').val('')
 }
 
@@ -34,13 +37,33 @@ const onChangePasswordFailure = function () {
 
 const onSignOutSuccess = function () {
   console.log('api.signOut success')
-  $('#sign-out input').val('')
+  $('#container-sign-up-in').removeClass('d-none')
+  $('#container-change-password').addClass('d-none')
+  $('#navbar').addClass('d-none')
 }
 
 const onSignOutFailure = function () {
   console.log('api.signOut success')
   $('#sign-out input').val('')
 }
+
+const onSignInNow = function () {
+  $('#container-sign-in').removeClass('d-none')
+  $('#container-sign-up').addClass('d-none')
+}
+
+const onRegisterNow = function () {
+  $('#container-sign-in').addClass('d-none')
+  $('#container-sign-up').removeClass('d-none')
+}
+
+const onBtnChangePassword = function () {
+  $('#container-change-password').removeClass('d-none')
+}
+
+$('#container-sign-up').addClass('d-none')
+$('#container-change-password').addClass('d-none')
+$('#navbar').addClass('d-none')
 
 module.exports = {
   onSignInSuccess,
@@ -50,5 +73,8 @@ module.exports = {
   onChangePasswordSuccess,
   onChangePasswordFailure,
   onSignOutSuccess,
-  onSignOutFailure
+  onSignOutFailure,
+  onSignInNow,
+  onRegisterNow,
+  onBtnChangePassword
 }
