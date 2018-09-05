@@ -1,22 +1,32 @@
 'use strict'
-
+const store = require('../store')
 const showTastingsTemplate = require('../templates/tasting-listing.handlebars')
+const showUserTastingsTemplate = require('../templates/tasting-listing-user.handlebars')
 const createTastingTemplate = require('../templates/tasting-create.handlebars')
+const updateTastingTemplate = require('../templates/tasting-update.handlebars')
 
 // const showWineTemplate = require('../templates/tasting-listing-single.handlebars')
 
 const onShowAllTastingsSuccess = function (response) {
-  console.log(response.tastings)
-  const showTastingsHtml = showTastingsTemplate({ tastings: response.tastings })
+  const allTastings = response.tastings
+  console.log(allTastings)
+  const userTastings = allTastings.filter(tasting => tasting.user.id === store.user.id)
+  console.log(userTastings)
+  const nonUserTastings = allTastings.filter(tasting => tasting.user.id !== store.user.id)
+
+  const showTastingsHtml = showTastingsTemplate({ tastings: nonUserTastings })
+  const showUserTastingsHtml = showUserTastingsTemplate({ tastings: userTastings })
+
   $('#container-tastings-index').html(showTastingsHtml)
+  $('#container-tastings-index').append(showUserTastingsHtml)
   console.log('onShowAllTastingsSuccess')
 }
 
-const onShowAllWinesFailure = function () {
+const onShowAllTastingsFailure = function () {
   console.log('onShowAllWinesFailure')
 }
 
-const onShowWineSuccess = function (response) {
+const onShowTastingSuccess = function (response) {
   console.log(response)
   // let html = '<ul>'
   // html += '<li>' + response.name + '</li>'
@@ -27,7 +37,7 @@ const onShowWineSuccess = function (response) {
   $('#wines-show input').val('')
 }
 
-const onShowWineFailure = function () {
+const onShowTastingFailure = function () {
   let html = '<ul>'
   html += '<li>Wine does not exits or is not owned by current user.</li>'
   html += '</ul>'
@@ -42,7 +52,7 @@ const onCreateTastingSuccess = function (response) {
   $('#tastings-create input').val('')
 }
 
-const onCreateWineFailure = function () {
+const onCreateTastingFailure = function () {
   let html = '<ul>'
   html += '<li>Wine creation failed.</li>'
   html += '</ul>'
@@ -51,17 +61,14 @@ const onCreateWineFailure = function () {
   $('#wines-create input').val('')
 }
 
-const onUpdateWineSuccess = function (response) {
-  console.log(response)
-  let html = '<ul>'
-  html += '<li>' + response.name + '</li>'
-  html += '</ul>'
-  $('#wines').html(html)
+const onUpdateTastingSuccess = function (response) {
+  console.log('update response', response)
   console.log('onUpdateWineSuccess')
+  $('#tastings-update').remove()
   $('#wines-update input').val('')
 }
 
-const onUpdateWineFailure = function () {
+const onUpdateTastingFailure = function () {
   let html = '<ul>'
   html += '<li>Wine does not exits or is not owned by current user.</li>'
   html += '</ul>'
@@ -70,7 +77,7 @@ const onUpdateWineFailure = function () {
   $('#wines-update input').val('')
 }
 
-const onDestroyWineSuccess = function (response) {
+const onDestroyTastingSuccess = function (response) {
   console.log(response)
   let html = '<ul>'
   html += '<li>Wine has been successfully deleted</li>'
@@ -80,7 +87,7 @@ const onDestroyWineSuccess = function (response) {
   $('#wines-destroy input').val('')
 }
 
-const onDestroyWineFailure = function () {
+const onDestroyTastingFailure = function () {
   let html = '<ul>'
   html += '<li>Wine does not exits or was not deleted successfully.</li>'
   html += '</ul>'
@@ -97,6 +104,11 @@ const newTasting = function (params) {
   $('#container-tastings-create').html(createTastingHtml)
 }
 
+const editTasting = function (tastingEl, tasting) {
+  const updateTastingHtml = updateTastingTemplate(tasting)
+  tastingEl.append(updateTastingHtml)
+}
+
 $('#wines-index').addClass('d-none')
 $('#wines-index-red').addClass('d-none')
 $('#wines-index-white').addClass('d-none')
@@ -107,14 +119,15 @@ $('#container-wines-delete').addClass('d-none')
 
 module.exports = {
   onShowAllTastingsSuccess,
-  onShowAllWinesFailure,
-  onShowWineSuccess,
-  onShowWineFailure,
-  onUpdateWineSuccess,
-  onUpdateWineFailure,
-  onDestroyWineSuccess,
-  onDestroyWineFailure,
+  onShowAllTastingsFailure,
+  onShowTastingSuccess,
+  onShowTastingFailure,
+  onUpdateTastingFailure,
+  onUpdateTastingSuccess,
+  onDestroyTastingSuccess,
+  onDestroyTastingFailure,
   onCreateTastingSuccess,
-  onCreateWineFailure,
-  newTasting
+  onCreateTastingFailure,
+  newTasting,
+  editTasting
 }

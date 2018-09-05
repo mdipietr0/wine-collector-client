@@ -46,10 +46,11 @@ const create = function (data) {
 }
 
 const update = function (data) {
+  console.log(data)
   return $.ajax({
     data,
     method: 'PATCH',
-    url: apiUrl + '/tastings/' + data.id,
+    url: apiUrl + '/tastings/' + data.tasting.id,
     headers: {
       'Authorization': 'Token token=' + store.user.token
     }
