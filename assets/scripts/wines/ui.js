@@ -2,6 +2,7 @@
 
 const showWinesTemplate = require('../templates/wine-listing.handlebars')
 const showWineTemplate = require('../templates/wine-listing-single.handlebars')
+const config = require('../config')
 
 const onShowAllWinesSuccess = function (response) {
   console.log('show all response')
@@ -14,6 +15,18 @@ const onShowAllWinesSuccess = function (response) {
   //   })
   // }
   // html += '</ul>'
+  response.wines = response.wines.map(wine => {
+    if (wine.color === 'Rose') {
+      wine.img = config.wineUrls.rose
+    } else if (wine.color === 'White') {
+      wine.img = config.wineUrls.white
+    } else {
+      wine.img = config.wineUrls.red
+    }
+    console.log(wine)
+    return wine
+  })
+
   const showWinesHtml = showWinesTemplate({ wines: response.wines })
   $('#wines').html(showWinesHtml)
   $('#wines').removeClass('d-none')
@@ -26,11 +39,19 @@ const onShowAllWinesFailure = function () {
 
 const onShowWineSuccess = function (response) {
   console.log('show response', response.wine)
+  const wine = response.wine
   // let html = '<ul>'
   // html += '<li>' + response.name + '</li>'
   // html += '</ul>'
   $('#wines').addClass('d-none')
-  const showWineHtml = showWineTemplate({ wine: response.wine })
+  if (wine.color === 'Rose') {
+    wine.img = config.wineUrls.rose
+  } else if (wine.color === 'White') {
+    wine.img = config.wineUrls.white
+  } else {
+    wine.img = config.wineUrls.red
+  }
+  const showWineHtml = showWineTemplate({ wine: wine })
   $('#wine').html(showWineHtml)
   $('#wine').removeClass('d-none')
   $('#wines-show input').val('')
@@ -109,6 +130,7 @@ $('#wines-index-rose').addClass('d-none')
 $('#container-wines-create').addClass('d-none')
 $('#container-wines-update').addClass('d-none')
 $('#container-wines-delete').addClass('d-none')
+$('#container-wines-index').addClass('d-none')
 
 module.exports = {
   onShowAllWinesSuccess,

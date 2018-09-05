@@ -1,10 +1,10 @@
 <div data-id="{{wine.id}}" class="card card-wine mx-auto" style="width: 18rem;">
-  <img class="card-img-top" src="https://organicwineexchange.com/wp-content/uploads/2013/01/Square-Red-Wine-Bottle-.jpg" alt="Card image cap">
+  <img class="card-img-top wine-img" src="{{wine.img}}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">Producer: {{wine.producer}}</h5>
     <h6 class="card-text">Name: {{wine.name}}</h6>
     <h6 class="card-text">Country: {{wine.country}}</h6>
-    <h6 class="card-text">Country: {{wine.region}}</h6>
+    <h6 class="card-text">Region: {{wine.region}}</h6>
     <button id="tastings-new" class="btn btn-primary">Add Tasting Notes</button>
   </div>
 </div>
