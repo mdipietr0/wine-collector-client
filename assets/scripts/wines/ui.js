@@ -16,6 +16,7 @@ const onShowAllWinesSuccess = function (response) {
   // html += '</ul>'
   const showWinesHtml = showWinesTemplate({ wines: response.wines })
   $('#wines').html(showWinesHtml)
+  $('#wines').removeClass('d-none')
   console.log('onShowAllWinesSuccess')
 }
 
@@ -31,6 +32,7 @@ const onShowWineSuccess = function (response) {
   $('#wines').addClass('d-none')
   const showWineHtml = showWineTemplate({ wine: response.wine })
   $('#wine').html(showWineHtml)
+  $('#wine').removeClass('d-none')
   $('#wines-show input').val('')
 }
 

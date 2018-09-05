@@ -11,6 +11,7 @@ const onSignInSuccess = function (response) {
   $('#wines-index-red').removeClass('d-none')
   $('#wines-index-white').removeClass('d-none')
   $('#wines-index-rose').removeClass('d-none')
+  $('#container-wines-index-buttons').removeClass('d-none')
 }
 
 const onSignInFailure = function () {
@@ -44,6 +45,11 @@ const onSignOutSuccess = function () {
   $('#container-sign-up-in').removeClass('d-none')
   $('#container-change-password').addClass('d-none')
   $('#navbar').addClass('d-none')
+  $('#wines').addClass('d-none')
+  $('#wine').addClass('d-none')
+  $('#container-tastings-create').addClass('d-none')
+  $('#container-tastings-index').addClass('d-none')
+  $('#container-change-password').addClass('d-none')
 }
 
 const onSignOutFailure = function () {

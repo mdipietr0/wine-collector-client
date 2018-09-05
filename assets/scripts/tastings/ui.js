@@ -19,6 +19,8 @@ const onShowAllTastingsSuccess = function (response) {
 
   $('#container-tastings-index').html(showTastingsHtml)
   $('#container-tastings-index').append(showUserTastingsHtml)
+  $('#container-tastings-index').removeClass('d-none')
+
   console.log('onShowAllTastingsSuccess')
 }
 
