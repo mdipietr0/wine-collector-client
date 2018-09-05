@@ -1,6 +1,8 @@
 'use strict'
 
 const showTastingsTemplate = require('../templates/tasting-listing.handlebars')
+const createTastingTemplate = require('../templates/tasting-create.handlebars')
+
 // const showWineTemplate = require('../templates/tasting-listing-single.handlebars')
 
 const onShowAllTastingsSuccess = function (response) {
@@ -34,14 +36,10 @@ const onShowWineFailure = function () {
   $('#wines-show input').val('')
 }
 
-const onCreateWineSuccess = function (response) {
+const onCreateTastingSuccess = function (response) {
   console.log(response)
-  let html = '<ul>'
-  html += '<li>' + response.name + '</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onCreateWineSuccess')
-  $('#wines-create input').val('')
+  console.log('onCreateTastingSuccess')
+  $('#tastings-create input').val('')
 }
 
 const onCreateWineFailure = function () {
@@ -91,6 +89,14 @@ const onDestroyWineFailure = function () {
   $('#wines-delete input').val('')
 }
 
+const newTasting = function (params) {
+  console.log('new tasting')
+  console.log(params)
+  const createTastingHtml = createTastingTemplate(params)
+  console.log(createTastingHtml)
+  $('#container-tastings-create').html(createTastingHtml)
+}
+
 $('#wines-index').addClass('d-none')
 $('#wines-index-red').addClass('d-none')
 $('#wines-index-white').addClass('d-none')
@@ -108,6 +114,7 @@ module.exports = {
   onUpdateWineFailure,
   onDestroyWineSuccess,
   onDestroyWineFailure,
-  onCreateWineSuccess,
-  onCreateWineFailure
+  onCreateTastingSuccess,
+  onCreateWineFailure,
+  newTasting
 }

@@ -2,6 +2,8 @@
 
 const api = require('./api')
 const ui = require('./ui')
+const store = require('../store')
+
 const getFormFields = require('../../../lib/get-form-fields')
 
 const onShowAllTastings = function (e) {
@@ -22,8 +24,19 @@ const onShowTasting = function (e) {
 const onCreateTasting = function (e) {
   e.preventDefault()
   const data = getFormFields(e.target)
+  console.log(data.tasting.wine_id)
   api.create(data)
-    .then(ui.onCreateTastingSuccess)
+    .then(function () {
+      $('#tastings-create').addClass('d-none')
+      api.indexByWine(data.tasting.wine_id)
+        .then(function (response) {
+          ui.onShowAllTastingsSuccess(response)
+        })
+        .catch(function () {
+          console.log('tastings api fail')
+        })
+      ui.onCreateTastingSuccess()
+    })
     .catch(ui.onCreateTastingFailure)
 }
 
@@ -43,12 +56,25 @@ const onDeleteTasting = function (e) {
     .catch(ui.onDestroyTastingFailure)
 }
 
+const onNewTasting = function (e) {
+  e.preventDefault()
+  const wineId = $(e.target).parent().parent().attr('data-id')
+  const userId = store.user.id
+  const tastingParams = { wineId, userId }
+  console.log(tastingParams)
+  $('#tastings-create').removeClass('d-none')
+  ui.newTasting(tastingParams)
+}
+
+$('#tastings-create').addClass('d-none')
+
 const addHandlers = function () {
   $('#tastings-index').on('click', onShowAllTastings)
   $('#tastings-show').on('submit', onShowTasting)
-  $('#tastings-create').on('submit', onCreateTasting)
+  $('#container-tastings-create').on('submit', 'form', onCreateTasting)
   $('#tastings-update').on('submit', onUpdateTasting)
   $('#tastings-delete').on('submit', onDeleteTasting)
+  $('#wine').on('click', 'button', onNewTasting)
 }
 
 module.exports = {

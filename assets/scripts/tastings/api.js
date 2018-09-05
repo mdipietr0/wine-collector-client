@@ -34,6 +34,7 @@ const show = function (id) {
 }
 
 const create = function (data) {
+  console.log(data)
   return $.ajax({
     data,
     method: 'POST',
