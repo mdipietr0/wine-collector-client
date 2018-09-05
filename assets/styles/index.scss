@@ -1,4 +1,20 @@
 @import '~bootstrap/scss/bootstrap';
+$success-color: #5cb85c;
+$failure-color: #f00;
+
+@mixin flash($color) {
+  background-color: $color;
+  color: $white;
+  padding: 10px;
+}
+
+.success {
+  @include flash($success-color)
+}
+
+.failure {
+  @include flash($failure-color)
+}
 
 body {
   background-color: #f5f5f5;
