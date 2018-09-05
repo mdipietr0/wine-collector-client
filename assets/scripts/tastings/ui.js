@@ -104,6 +104,7 @@ const newTasting = function (params) {
   const createTastingHtml = createTastingTemplate(params)
   console.log(createTastingHtml)
   $('#container-tastings-create').html(createTastingHtml)
+  $('#container-tastings-create').removeClass('d-none')
 }
 
 const editTasting = function (tastingEl, tasting) {

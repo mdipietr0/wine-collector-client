@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const {flash} = require('../templates/helpers/flash')
 
 const onSignInSuccess = function (response) {
   store.user = response.user
@@ -12,11 +13,13 @@ const onSignInSuccess = function (response) {
   $('#wines-index-white').removeClass('d-none')
   $('#wines-index-rose').removeClass('d-none')
   $('#container-wines-index-buttons').removeClass('d-none')
+  $('#container-wines-index').removeClass('d-none')
 }
 
 const onSignInFailure = function () {
   console.log('onSignInFailure')
   $('#sign-in input').val('')
+  flash(false, 'Unable to Sign in!')
 }
 
 const onSignUpSuccess = function () {
@@ -26,7 +29,7 @@ const onSignUpSuccess = function () {
 
 const onSignUpFailure = function () {
   console.log('api.signUp failure')
-  $('#sign-up input').val('')
+  flash(false, 'Unable to Sign up!')
 }
 
 const onChangePasswordSuccess = function () {
@@ -38,6 +41,7 @@ const onChangePasswordSuccess = function () {
 const onChangePasswordFailure = function () {
   console.log('api.changePassword failure')
   $('#change-password input').val('')
+  flash(false, 'Unable to Change Password!')
 }
 
 const onSignOutSuccess = function () {
@@ -50,11 +54,13 @@ const onSignOutSuccess = function () {
   $('#container-tastings-create').addClass('d-none')
   $('#container-tastings-index').addClass('d-none')
   $('#container-change-password').addClass('d-none')
+  $('#container-wines-index').addClass('d-none')
 }
 
 const onSignOutFailure = function () {
   console.log('api.signOut success')
   $('#sign-out input').val('')
+  flash(false, 'Unable to Sign out!')
 }
 
 const onSignInNow = function () {

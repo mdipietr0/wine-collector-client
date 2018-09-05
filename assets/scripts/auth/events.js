@@ -22,7 +22,7 @@ const onSignUp = function (e) {
         .catch(ui.onSignInFailure)
     })
     .then(ui.onSignUpSuccess)
-    .catch(ui.onSignUpSuccess)
+    .catch(ui.onSignUpFailure)
 }
 
 const onChangePassword = function (e) {
