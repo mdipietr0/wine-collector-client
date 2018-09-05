@@ -4,7 +4,8 @@ const showWinesTemplate = require('../templates/wine-listing.handlebars')
 const showWineTemplate = require('../templates/wine-listing-single.handlebars')
 
 const onShowAllWinesSuccess = function (response) {
-  console.log(response)
+  console.log('show all response')
+  console.log(response.wines)
   // let html = '<ul>'
   // if (response.length > 0) {
   //   response.forEach(wine => {
@@ -13,7 +14,7 @@ const onShowAllWinesSuccess = function (response) {
   //   })
   // }
   // html += '</ul>'
-  const showWinesHtml = showWinesTemplate({ wines: response })
+  const showWinesHtml = showWinesTemplate({ wines: response.wines })
   $('#wines').html(showWinesHtml)
   console.log('onShowAllWinesSuccess')
 }
@@ -23,12 +24,12 @@ const onShowAllWinesFailure = function () {
 }
 
 const onShowWineSuccess = function (response) {
-  console.log(response)
+  console.log('show response', response.wine)
   // let html = '<ul>'
   // html += '<li>' + response.name + '</li>'
   // html += '</ul>'
   $('#wines').addClass('d-none')
-  const showWineHtml = showWineTemplate({ wine: response })
+  const showWineHtml = showWineTemplate({ wine: response.wine })
   $('#wine').html(showWineHtml)
   $('#wines-show input').val('')
 }
