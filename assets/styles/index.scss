@@ -1,1 +1,55 @@
 @import '~bootstrap/scss/bootstrap';
+$success-color: #5cb85c;
+$failure-color: #f00;
+
+@mixin flash($color) {
+  background-color: $color;
+  color: $white;
+  padding: 10px;
+}
+
+.success {
+  @include flash($success-color)
+}
+
+.failure {
+  @include flash($failure-color)
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.container-main {
+  margin-top: 40px;
+}
+
+.container-sign-up-in {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.box-wines {
+  width: 900px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card-wine {
+  margin: 3px;
+}
+
+.card-tasting {
+}
+
+.btn-wines-index {
+  width: 300px;
+}
+
+.wine-img {
+  height: 300px;
+}
+
+.tastings-form {
+  width: 350px;
+}

@@ -1,0 +1,25 @@
+{{#each tastings as |tasting|}}
+  {{log tasting}}
+
+  <div
+  data-id="{{tasting.id}}"
+  data-appearance="{{tasting.appearance}}"
+  data-nose="{{tasting.nose}}"
+  data-palate="{{tasting.palate}}"
+  data-conclusions="{{tasting.conclusions}}"
+  data-userid="{{tasting.user.id}}"
+  data-wineid="{{tasting.wine.id}}"
+  class="card card-tasting">
+    <div class="card-header">
+      <h5>Tasting by: {{tasting.user.email}}</h5>
+    </div>
+    <div class="card-body">
+      <h6 class="card-title">Appearance: {{tasting.appearance}}</h6>
+      <h6 class="card-text">Nose: {{tasting.nose}}</h6>
+      <h6 class="card-title">Palate: {{tasting.palate}}</h6>
+      <h6 class="card-text">Conclusions: {{tasting.conclusions}}</h6>
+      <button data-id="{{tasting.id}}" class="btn btn-primary tasting-edit" name="button">Edit</button>
+      <button data-id="{{tasting.id}}" class="btn btn-primary tasting-delete" name="button">Delete</button>
+    </div>
+  </div>
+{{/each}}

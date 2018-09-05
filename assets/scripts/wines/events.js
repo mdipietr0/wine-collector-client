@@ -1,7 +1,9 @@
 'use strict'
 
 const api = require('./api')
+const tastingsApi = require('../tastings/api')
 const ui = require('./ui')
+const tastingsUi = require('../tastings/ui')
 const getFormFields = require('../../../lib/get-form-fields')
 
 const onShowAllWines = function (e) {
@@ -52,6 +54,28 @@ const onDeleteWine = function (e) {
     .catch(ui.onDestroyWineFailure)
 }
 
+const onClickWineCard = function (e) {
+  e.preventDefault()
+  const wineId = $(e.target).parent().attr('data-id')
+  api.show(wineId)
+    .then(function (response) {
+      ui.onShowWineSuccess(response)
+      tastingsApi.indexByWine(wineId)
+        .then(function (response) {
+          tastingsUi.onShowAllTastingsSuccess(response)
+        })
+        .catch(function () {
+          console.log('tastings api fail')
+        })
+    })
+    .then()
+    .catch(ui.onShowWineFailure)
+}
+
+const onWinesIndexBtn = function () {
+  $('#container-wines-index-buttons').addClass('d-none')
+}
+
 const addHandlers = function () {
   $('#wines-index').on('click', onShowAllWines)
   $('#wines-index-red').on('submit', onShowWinesByColor)
@@ -61,6 +85,8 @@ const addHandlers = function () {
   $('#wines-create').on('submit', onCreateWine)
   $('#wines-update').on('submit', onUpdateWine)
   $('#wines-delete').on('submit', onDeleteWine)
+  $('#wines').on('click', 'a', onClickWineCard)
+  $('.btn-wines-index').on('click', onWinesIndexBtn)
 }
 
 module.exports = {
