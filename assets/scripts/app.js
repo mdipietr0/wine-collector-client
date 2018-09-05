@@ -2,6 +2,7 @@
 
 const wines = require('./wines/events')
 const auth = require('./auth/events')
+const tastings = require('./tastings/events')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -9,6 +10,7 @@ const auth = require('./auth/events')
 // require('./example')
 
 $(() => {
+  tastings.addHandlers()
   auth.addHandlers()
   wines.addHandlers()
 })
