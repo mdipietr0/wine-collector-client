@@ -14,10 +14,10 @@
 <body class="text-center">
   <div id="navbar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Wine-Collector-Client</a>
+      <a class="navbar-brand" href="#">Wine Collector</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          <li class="nav-item" data-toggle="modal" data-target="#changePasswordModal">
             <a id="btn-change-password" class="nav-link" href="#">Change Password <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
@@ -29,7 +29,7 @@
   </div>
   <h4 id="auth-flash"></h4>
   <div class="container container-main">
-    <h1>Wine Collector Client</h1>
+    <h1 id="title">Wine Collector</h1>
     <div id="container-sign-up-in" class="container container-sign-up-in">
       <div id="container-sign-in" class="container col-md-6 py-3">
         <form id="sign-in">
@@ -59,7 +59,7 @@
         </form>
       </div>
     </div>
-    <div id="container-change-password" class="container col-md-6 py-3 container-change-password">
+    <!-- <div id="container-change-password" class="container col-md-6 py-3 container-change-password">
       <form id="change-password">
         <div class="form-group">
           <input type="password" class="form-control" name="passwords[old]" placeholder="Old Password"/>
@@ -69,30 +69,30 @@
         </div>
         <button type="submit" class="btn btn-primary">Change</button>
       </form>
-    </div>
+    </div> -->
     <div id="container-wines-index">
       <div id="container-wines-index-buttons">
-        <button id="wines-index" class="btn btn-primary btn-wines-index">Show all wines</button>
-
+        <button id="wines-index" class="btn btn-primary btn-wines-index">View all wines</button>
+        <p>Or select by color</p>
         <form id="wines-index-red">
           <div class="form-group">
             <input hidden value='Red' class="form-control" type="text" name="color"/>
           </div>
-          <button type="submit" class="btn btn-primary btn-wines-index">Show Red Wine</button>
+          <button type="submit" class="btn btn-primary btn-wines-index">Red</button>
         </form>
 
         <form id="wines-index-white">
           <div class="form-group">
             <input hidden value='White' class="form-control" type="text" name="color"/>
           </div>
-          <button type="submit" class="btn btn-primary btn-wines-index">Show White Wine</button>
+          <button type="submit" class="btn btn-primary btn-wines-index">White</button>
         </form>
 
         <form id="wines-index-rose">
           <div class="form-group">
             <input hidden value='Rose' class="form-control" type="text" name="color"/>
           </div>
-          <button type="submit" class="btn btn-primary btn-wines-index">Show Rose Wine</button>
+          <button type="submit" class="btn btn-primary btn-wines-index">Rose</button>
         </form>
       </div>
       <div class="box-wines mx-auto" id="wines"></div>
@@ -160,6 +160,34 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id='change-password' class="form-group">
+          <fieldset>
+            <div class="form-group">
+              <input class ="form-control" type="password" name ='passwords[old]' placeholder="Old Password" required>
+            </div>
+            <div class="form-group">
+              <input class ="form-control" type="password" name ='passwords[new]' placeholder="New Password" required>
+            </div>
+            <button class="btn btn-block btn-primary" type="submit">Change Password</button>
+            <hr>
+            <button class="btn btn-block btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </body>

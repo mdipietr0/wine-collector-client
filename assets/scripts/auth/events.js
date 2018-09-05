@@ -51,6 +51,10 @@ const onBtnChangePassword = function (e) {
   ui.onBtnChangePassword()
 }
 
+const onHome = function () {
+  ui.onHome()
+}
+
 const addHandlers = function () {
   document.querySelector('#sign-in-now').addEventListener('click', onSignInNow)
   document.querySelector('#register-now').addEventListener('click', onRegisterNow)
@@ -59,6 +63,7 @@ const addHandlers = function () {
   document.querySelector('#sign-in').addEventListener('submit', onSignIn)
   document.querySelector('#sign-up').addEventListener('submit', onSignUp)
   document.querySelector('#sign-out').addEventListener('click', onSignOut)
+  document.querySelector('.navbar-brand').addEventListener('click', onHome)
 }
 
 module.exports = {

@@ -3,6 +3,17 @@
 const store = require('../store')
 const {flash} = require('../templates/helpers/flash')
 
+const onHome = function () {
+  console.log('home')
+  $('#container-change-password').addClass('d-none')
+  $('#wines').addClass('d-none')
+  $('#wine').addClass('d-none')
+  $('#container-tastings-create').addClass('d-none')
+  $('#container-tastings-index').addClass('d-none')
+  $('#container-change-password').addClass('d-none')
+  $('#container-wines-index').removeClass('d-none')
+  $('#container-wines-index-buttons').removeClass('d-none')
+}
 const onSignInSuccess = function (response) {
   store.user = response.user
   $('#sign-in input').val('')
@@ -13,6 +24,8 @@ const onSignInSuccess = function (response) {
   $('#wines-index-white').removeClass('d-none')
   $('#wines-index-rose').removeClass('d-none')
   $('#container-wines-index-buttons').removeClass('d-none')
+  $('#container-wines-index').removeClass('d-none')
+  $('#title').addClass('d-none')
   $('#container-wines-index').removeClass('d-none')
 }
 
@@ -36,12 +49,15 @@ const onChangePasswordSuccess = function () {
   console.log('api.changePassword success')
   $('#container-change-password').addClass('d-none')
   $('#change-password input').val('')
+  flash(true, 'Password Changed!')
+  $('#changePasswordModal').modal('hide')
 }
 
 const onChangePasswordFailure = function () {
   console.log('api.changePassword failure')
   $('#change-password input').val('')
   flash(false, 'Unable to Change Password!')
+  $('#changePasswordModal').modal('hide')
 }
 
 const onSignOutSuccess = function () {
@@ -55,6 +71,7 @@ const onSignOutSuccess = function () {
   $('#container-tastings-index').addClass('d-none')
   $('#container-change-password').addClass('d-none')
   $('#container-wines-index').addClass('d-none')
+  $('#title').removeClass('d-none')
 }
 
 const onSignOutFailure = function () {
@@ -82,6 +99,7 @@ $('#container-change-password').addClass('d-none')
 $('#navbar').addClass('d-none')
 
 module.exports = {
+  onHome,
   onSignInSuccess,
   onSignInFailure,
   onSignUpSuccess,
