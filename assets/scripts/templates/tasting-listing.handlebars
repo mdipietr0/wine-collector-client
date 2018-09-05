@@ -1,13 +1,14 @@
 {{#each tastings as |tasting|}}
   {{log tasting}}
 
-  <div data-id="{{tasting.id}}" class="card card-tasting" style="width: 18rem;">
+  <div data-id="{{tasting.id}}" class="card card-tasting">
+    <div class="card-header">
+        <h5>Tasting by: {{tasting.user.email}}</h5>
+    </div>
     <div class="card-body">
-      <h5 class="card-title">User: {{tasting.user.id}}</h5>
-      <h5 class="card-title">Wine: {{tasting.wine.id}}</h5>
-      <h5 class="card-title">Appearance: {{tasting.appearance}}</h5>
+      <h6 class="card-title">Appearance: {{tasting.appearance}}</h6>
       <h6 class="card-text">Nose: {{tasting.nose}}</h6>
-      <h5 class="card-title">Palate: {{tasting.palate}}</h5>
+      <h6 class="card-title">Palate: {{tasting.palate}}</h6>
       <h6 class="card-text">Conclusions: {{tasting.conclusions}}</h6>
     </div>
   </div>
