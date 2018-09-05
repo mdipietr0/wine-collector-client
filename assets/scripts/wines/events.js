@@ -1,6 +1,7 @@
 'use strict'
 
 const api = require('./api')
+const tastingsApi = require('../tastings/api')
 const ui = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
 
@@ -56,10 +57,15 @@ const onClickWineCard = function (e) {
   e.preventDefault()
   const wineId = $(e.target).parent().attr('data-id')
   api.show(wineId)
+    .then(function () {
+      console.log('tating')
+      tastingsApi.index()
+        .then(function (response) {
+          console.log(response)
+        })
+    })
     .then(ui.onShowWineSuccess)
     .catch(ui.onShowWineFailure)
-  api.index(wineId)
-    .then(ui.onShow)
 }
 
 const onWinesIndexBtn = function () {
