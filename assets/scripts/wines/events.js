@@ -3,6 +3,7 @@
 const api = require('./api')
 const tastingsApi = require('../tastings/api')
 const ui = require('./ui')
+const tastingsUi = require('../tastings/ui')
 const getFormFields = require('../../../lib/get-form-fields')
 
 const onShowAllWines = function (e) {
@@ -57,14 +58,17 @@ const onClickWineCard = function (e) {
   e.preventDefault()
   const wineId = $(e.target).parent().attr('data-id')
   api.show(wineId)
-    .then(function () {
-      console.log('tating')
-      tastingsApi.index()
+    .then(function (response) {
+      ui.onShowWineSuccess(response)
+      tastingsApi.indexByWine(wineId)
         .then(function (response) {
-          console.log(response)
+          tastingsUi.onShowAllTastingsSuccess(response)
+        })
+        .catch(function () {
+          console.log('tastings api fail')
         })
     })
-    .then(ui.onShowWineSuccess)
+    .then()
     .catch(ui.onShowWineFailure)
 }
 

@@ -1,21 +1,13 @@
 'use strict'
 
-const showWinesTemplate = require('../templates/wine-listing.handlebars')
-const showWineTemplate = require('../templates/wine-listing-single.handlebars')
+const showTastingsTemplate = require('../templates/tasting-listing.handlebars')
+// const showWineTemplate = require('../templates/tasting-listing-single.handlebars')
 
-const onShowAllWinesSuccess = function (response) {
-  console.log(response)
-  // let html = '<ul>'
-  // if (response.length > 0) {
-  //   response.forEach(wine => {
-  //     console.log(wine.name)
-  //     html += '<li>' + wine.name + '</li>'
-  //   })
-  // }
-  // html += '</ul>'
-  const showWinesHtml = showWinesTemplate({ wines: response })
-  $('#wines').html(showWinesHtml)
-  console.log('onShowAllWinesSuccess')
+const onShowAllTastingsSuccess = function (response) {
+  console.log(response.tastings)
+  const showTastingsHtml = showTastingsTemplate({ tastings: response.tastings })
+  $('#container-tastings-index').html(showTastingsHtml)
+  console.log('onShowAllTastingsSuccess')
 }
 
 const onShowAllWinesFailure = function () {
@@ -28,8 +20,8 @@ const onShowWineSuccess = function (response) {
   // html += '<li>' + response.name + '</li>'
   // html += '</ul>'
   $('#wines').addClass('d-none')
-  const showWineHtml = showWineTemplate({ wine: response })
-  $('#wine').html(showWineHtml)
+  // const showWineHtml = showWineTemplate({ wine: response })
+  // $('#wine').html(showWineHtml)
   $('#wines-show input').val('')
 }
 
@@ -108,7 +100,7 @@ $('#container-wines-update').addClass('d-none')
 $('#container-wines-delete').addClass('d-none')
 
 module.exports = {
-  onShowAllWinesSuccess,
+  onShowAllTastingsSuccess,
   onShowAllWinesFailure,
   onShowWineSuccess,
   onShowWineFailure,

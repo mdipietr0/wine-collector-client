@@ -13,6 +13,16 @@ const index = function () {
   })
 }
 
+const indexByWine = function (wineId) {
+  return $.ajax({
+    method: 'GET',
+    url: apiUrl + '/tastings?wine_id=' + wineId,
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
 const show = function (id) {
   return $.ajax({
     method: 'GET',
@@ -57,6 +67,7 @@ const destroy = function (id) {
 
 module.exports = {
   index,
+  indexByWine,
   show,
   create,
   update,
