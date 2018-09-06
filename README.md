@@ -70,4 +70,5 @@ made the client more user friendly.
 
   - More intuitive note forms in the form of provided descriptions('Fruity',
     'Floral', 'Light', etc)
+    https://www.wsetglobal.com/media/2491/level-2-wines-sat-english-2014.pdf
   - Better UX/UI overall
