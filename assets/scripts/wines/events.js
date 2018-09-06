@@ -55,7 +55,11 @@ const onDeleteWine = function (e) {
 
 const onClickWineCard = function (e) {
   e.preventDefault()
-  const wineId = $(e.target).parent().attr('data-id')
+  const nodeName = e.target.nodeName
+  console.log(nodeName)
+  const wineId = (nodeName === 'H5' || nodeName === 'H6')
+    ? $(e.target).parent().parent().attr('data-id')
+    : $(e.target).parent().attr('data-id')
   api.show(wineId)
     .then(function (response) {
       ui.onShowWineSuccess(response)
