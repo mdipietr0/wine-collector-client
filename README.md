@@ -42,8 +42,8 @@ the interactions with each API endpoint.
 Once all of the endoints were connecting I structured my UI with bootstrap and
 made the client more user friendly.
 
-[Wireframe1](https://i.imgur.com/7o02CGE.png)
-[Wireframe2](https://i.imgur.com/AwISyEt.png)
+![Wireframe1](https://i.imgur.com/7o02CGE.png)
+![Wireframe2](https://i.imgur.com/AwISyEt.png)
 
 ## User Stories:
   - A user will be able to register an account
