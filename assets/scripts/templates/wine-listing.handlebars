@@ -1,17 +1,10 @@
 {{#each wines as |wine|}}
-  {{log wine}}
-
 <a href="#">
   <div data-id="{{wine.id}}" class="card card-wine" style="width: 18rem;">
     <img class="card-img-top wine-img" src="{{wine.img}}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Producer: {{wine.producer}}</h5>
-      <h6 class="card-text">Name: {{wine.name}}</h6>
-      {{#if wine.name}}
-        {{wine.name}}
-      {{else}}
-        No name provided.
-      {{/if}}
+      <h5 class="card-title">{{wine.producer}}</h5>
+      <h6 class="card-text">{{wine.name}}</h6>
     </div>
   </div>
   </a>

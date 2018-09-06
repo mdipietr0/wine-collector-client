@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store')
+const {flash} = require('../templates/helpers/flash')
 const showTastingsTemplate = require('../templates/tasting-listing.handlebars')
 const showUserTastingsTemplate = require('../templates/tasting-listing-user.handlebars')
 const createTastingTemplate = require('../templates/tasting-create.handlebars')
@@ -9,100 +10,57 @@ const updateTastingTemplate = require('../templates/tasting-update.handlebars')
 
 const onShowAllTastingsSuccess = function (response) {
   const allTastings = response.tastings
-  console.log(allTastings)
   const userTastings = allTastings.filter(tasting => tasting.user.id === store.user.id)
-  console.log(userTastings)
   const nonUserTastings = allTastings.filter(tasting => tasting.user.id !== store.user.id)
-
   const showTastingsHtml = showTastingsTemplate({ tastings: nonUserTastings })
   const showUserTastingsHtml = showUserTastingsTemplate({ tastings: userTastings })
-
   $('#container-tastings-index').html(showTastingsHtml)
   $('#container-tastings-index').append(showUserTastingsHtml)
   $('#container-tastings-index').removeClass('d-none')
-
-  console.log('onShowAllTastingsSuccess')
 }
 
 const onShowAllTastingsFailure = function () {
-  console.log('onShowAllWinesFailure')
+  flash(false, 'Unexpected error!')
 }
 
 const onShowTastingSuccess = function (response) {
-  console.log(response)
-  // let html = '<ul>'
-  // html += '<li>' + response.name + '</li>'
-  // html += '</ul>'
   $('#wines').addClass('d-none')
-  // const showWineHtml = showWineTemplate({ wine: response })
-  // $('#wine').html(showWineHtml)
   $('#wines-show input').val('')
 }
 
 const onShowTastingFailure = function () {
-  let html = '<ul>'
-  html += '<li>Wine does not exits or is not owned by current user.</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onShowWineFailure')
-  $('#wines-show input').val('')
+  flash(false, 'Can not show tasting!')
 }
 
 const onCreateTastingSuccess = function (response) {
-  console.log(response)
-  console.log('onCreateTastingSuccess')
   $('#tastings-create input').val('')
 }
 
 const onCreateTastingFailure = function () {
-  let html = '<ul>'
-  html += '<li>Wine creation failed.</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onCreateWineFailure')
+  flash(false, 'Can not create tasting!')
   $('#wines-create input').val('')
 }
 
 const onUpdateTastingSuccess = function (response) {
-  console.log('update response', response)
-  console.log('onUpdateWineSuccess')
   $('#tastings-update').remove()
   $('#wines-update input').val('')
 }
 
 const onUpdateTastingFailure = function () {
-  let html = '<ul>'
-  html += '<li>Wine does not exits or is not owned by current user.</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onUpdateWineFailure')
+  flash(false, 'Can not update tasting!')
   $('#wines-update input').val('')
 }
 
 const onDestroyTastingSuccess = function (response) {
-  console.log(response)
-  let html = '<ul>'
-  html += '<li>Wine has been successfully deleted</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onDestroyWineSuccess')
-  $('#wines-destroy input').val('')
+  flash(true, 'Tasting successfully deleted!')
 }
 
 const onDestroyTastingFailure = function () {
-  let html = '<ul>'
-  html += '<li>Wine does not exits or was not deleted successfully.</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onDestroyWineFailure')
-  $('#wines-delete input').val('')
+  flash(false, 'Deleted unsuccessful!')
 }
 
 const newTasting = function (params) {
-  console.log('new tasting')
-  console.log(params)
   const createTastingHtml = createTastingTemplate(params)
-  console.log(createTastingHtml)
   $('#container-tastings-create').html(createTastingHtml)
   $('#container-tastings-create').removeClass('d-none')
 }

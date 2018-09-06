@@ -1,7 +1,6 @@
 'use strict'
 
 const flash = function (success, msg) {
-  console.log('flash')
   $('#auth-flash').removeClass()
   $('#auth-flash').text(msg)
   if (success) {

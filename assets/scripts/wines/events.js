@@ -16,7 +16,6 @@ const onShowAllWines = function (e) {
 const onShowWinesByColor = function (e) {
   e.preventDefault()
   const color = getFormFields(e.target).color
-  console.log(color)
   api.indexByColor(color)
     .then(ui.onShowAllWinesSuccess)
     .catch(ui.onShowAllWinesFailure)
@@ -61,12 +60,8 @@ const onClickWineCard = function (e) {
     .then(function (response) {
       ui.onShowWineSuccess(response)
       tastingsApi.indexByWine(wineId)
-        .then(function (response) {
-          tastingsUi.onShowAllTastingsSuccess(response)
-        })
-        .catch(function () {
-          console.log('tastings api fail')
-        })
+        .then(tastingsUi.onShowAllTastingsSuccess)
+        .catch(ui.onShowAllTastingsFailure)
     })
     .then()
     .catch(ui.onShowWineFailure)

@@ -24,17 +24,12 @@ const onShowTasting = function (e) {
 const onCreateTasting = function (e) {
   e.preventDefault()
   const data = getFormFields(e.target)
-  console.log(data.tasting.wine_id)
   api.create(data)
     .then(function () {
       $('#tastings-create').addClass('d-none')
       api.indexByWine(data.tasting.wine_id)
-        .then(function (response) {
-          ui.onShowAllTastingsSuccess(response)
-        })
-        .catch(function () {
-          console.log('tastings api fail')
-        })
+        .then(ui.onShowAllTastingsSuccess)
+        .catch(ui.onShowAllTastingsFailure)
       ui.onCreateTastingSuccess()
     })
     .catch(ui.onCreateTastingFailure)
@@ -46,12 +41,8 @@ const onUpdateTasting = function (e) {
   api.update(data)
     .then(function () {
       api.indexByWine(data.tasting.wine_id)
-        .then(function (response) {
-          ui.onShowAllTastingsSuccess(response)
-        })
-        .catch(function () {
-          console.log('tastings api fail')
-        })
+        .then(ui.onShowAllTastingsSuccess)
+        .catch(ui.onShowAllTastingsFailure)
     })
     .then(ui.onUpdateTastingSuccess)
     .catch(ui.onUpdateTastingFailure)
@@ -59,9 +50,7 @@ const onUpdateTasting = function (e) {
 
 const onDeleteTasting = function (e) {
   e.preventDefault()
-  console.log('testing delete')
   const tastingId = $(e.target).attr('data-id')
-  console.log(tastingId)
   api.destroy(tastingId)
     .then(function () {
       $(e.target).parent().parent().remove()
@@ -75,13 +64,11 @@ const onNewTasting = function (e) {
   const wineId = $(e.target).parent().parent().attr('data-id')
   const userId = store.user.id
   const tastingParams = { wineId, userId }
-  console.log(tastingParams)
   // $('#tastings-create').removeClass('d-none')
   ui.newTasting(tastingParams)
 }
 
 const onEditTasting = function (e) {
-  console.log('edit testing')
   const tastingEl = $(e.target).parent().parent()
   const tasting = {}
   tasting.id = tastingEl.attr('data-id')

@@ -3,18 +3,9 @@
 const showWinesTemplate = require('../templates/wine-listing.handlebars')
 const showWineTemplate = require('../templates/wine-listing-single.handlebars')
 const config = require('../config')
+const {flash} = require('../templates/helpers/flash')
 
 const onShowAllWinesSuccess = function (response) {
-  console.log('show all response')
-  console.log(response.wines)
-  // let html = '<ul>'
-  // if (response.length > 0) {
-  //   response.forEach(wine => {
-  //     console.log(wine.name)
-  //     html += '<li>' + wine.name + '</li>'
-  //   })
-  // }
-  // html += '</ul>'
   response.wines = response.wines.map(wine => {
     if (wine.color === 'Rose') {
       wine.img = config.wineUrls.rose
@@ -23,26 +14,19 @@ const onShowAllWinesSuccess = function (response) {
     } else {
       wine.img = config.wineUrls.red
     }
-    console.log(wine)
     return wine
   })
-
   const showWinesHtml = showWinesTemplate({ wines: response.wines })
   $('#wines').html(showWinesHtml)
   $('#wines').removeClass('d-none')
-  console.log('onShowAllWinesSuccess')
 }
 
 const onShowAllWinesFailure = function () {
-  console.log('onShowAllWinesFailure')
+  flash(false, 'Show wines unsuccesful!')
 }
 
 const onShowWineSuccess = function (response) {
-  console.log('show response', response.wine)
   const wine = response.wine
-  // let html = '<ul>'
-  // html += '<li>' + response.name + '</li>'
-  // html += '</ul>'
   $('#wines').addClass('d-none')
   if (wine.color === 'Rose') {
     wine.img = config.wineUrls.rose
@@ -58,68 +42,36 @@ const onShowWineSuccess = function (response) {
 }
 
 const onShowWineFailure = function () {
-  let html = '<ul>'
-  html += '<li>Wine does not exits or is not owned by current user.</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onShowWineFailure')
-  $('#wines-show input').val('')
+  flash(false, 'Show wine unsuccesful!')
 }
 
 const onCreateWineSuccess = function (response) {
-  console.log(response)
-  let html = '<ul>'
-  html += '<li>' + response.name + '</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onCreateWineSuccess')
+  flash(true, 'Wine successfully created')
   $('#wines-create input').val('')
 }
 
 const onCreateWineFailure = function () {
-  let html = '<ul>'
-  html += '<li>Wine creation failed.</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onCreateWineFailure')
+  flash(false, 'Create wine unsuccessful')
   $('#wines-create input').val('')
 }
 
 const onUpdateWineSuccess = function (response) {
-  console.log(response)
-  let html = '<ul>'
-  html += '<li>' + response.name + '</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onUpdateWineSuccess')
+  flash(true, 'Wine successfully updated!')
   $('#wines-update input').val('')
 }
 
 const onUpdateWineFailure = function () {
-  let html = '<ul>'
-  html += '<li>Wine does not exits or is not owned by current user.</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onUpdateWineFailure')
+  flash(false, 'Wine update unsuccessful!')
   $('#wines-update input').val('')
 }
 
 const onDestroyWineSuccess = function (response) {
-  console.log(response)
-  let html = '<ul>'
-  html += '<li>Wine has been successfully deleted</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onDestroyWineSuccess')
+  flash(true, 'Wine successfully deleted!')
   $('#wines-destroy input').val('')
 }
 
 const onDestroyWineFailure = function () {
-  let html = '<ul>'
-  html += '<li>Wine does not exits or was not deleted successfully.</li>'
-  html += '</ul>'
-  $('#wines').html(html)
-  console.log('onDestroyWineFailure')
+  flash(false, 'Wine delete unsuccessful!')
   $('#wines-delete input').val('')
 }
 

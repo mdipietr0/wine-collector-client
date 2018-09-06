@@ -34,7 +34,6 @@ const show = function (id) {
 }
 
 const create = function (data) {
-  console.log(data)
   return $.ajax({
     data,
     method: 'POST',
@@ -46,7 +45,6 @@ const create = function (data) {
 }
 
 const update = function (data) {
-  console.log(data)
   return $.ajax({
     data,
     method: 'PATCH',
