@@ -17,7 +17,23 @@ $failure-color: #f00;
 }
 
 body {
+  color: 	#383838;
   background-color: #f5f5f5;
+  background-image: url('public/purple-grapes-553462_1280.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form-control-credentials {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #f5f5f5;
+}
+
+.form-wrapper {
+  background-color: white;
+  border-radius: 5px;
 }
 
 .container-main {

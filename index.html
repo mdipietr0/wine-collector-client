@@ -31,28 +31,30 @@
   <div class="container container-main">
     <h1 id="title">Wine Collector</h1>
     <div id="container-sign-up-in" class="container container-sign-up-in">
-      <div id="container-sign-in" class="container col-md-6 py-3">
+      <div id="container-sign-in" class="form-wrapper container col-md-6 py-3">
+        <h3>Sign In</h3>
         <form id="sign-in">
           <div class="form-group">
-            <input type="email" class="form-control" name="credentials[email]" placeholder="Email Address" aria-describedby="emailHelp"/>
+            <input type="email" class="form-control form-control-credentials" name="credentials[email]" placeholder="Email Address" aria-describedby="emailHelp"/>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" name="credentials[password]" placeholder="Password"/>
+            <input type="password" class="form-control form-control-credentials" name="credentials[password]" placeholder="Password"/>
           </div>
           <button type="submit" class="btn btn-primary">Sign In</button>
           <p>Not yet a member,<button type="button" id="register-now" class="btn btn-link">register now</button></p>
         </form>
       </div>
-      <div id="container-sign-up" class="container col-md-6 py-3">
+      <div id="container-sign-up" class="form-wrapper container col-md-6 py-3">
         <form id="sign-up">
+          <h3>Sign Up</h3>
           <div class="form-group">
-            <input type="email" class="form-control" name="credentials[email]" placeholder="Email Address" aria-describedby="emailHelp"/>
+            <input type="email" class="form-control form-control-credentials" name="credentials[email]" placeholder="Email Address" aria-describedby="emailHelp"/>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" name="credentials[password_confirmation]" placeholder="Password"/>
+            <input type="password" class="form-control form-control-credentials" name="credentials[password_confirmation]" placeholder="Password"/>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" name="credentials[password]" placeholder="Confirm Password"/>
+            <input type="password" class="form-control form-control-credentials" name="credentials[password]" placeholder="Confirm Password"/>
           </div>
           <button type="submit" class="btn btn-primary">Sign Up</button>
           <p>Already a member,<button type="button" id="sign-in-now" class="btn btn-link">sign in now</button></p>
