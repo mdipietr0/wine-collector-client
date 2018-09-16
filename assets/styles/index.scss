@@ -1,6 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 $success-color: #5cb85c;
 $failure-color: #f00;
+$white: #fff;
+$off-white: #f5f5f5;
+$grey: #383838;
+$grape-light: rgba(107, 130, 168, 1);
+$grape-dark: #2e4973;
 
 @mixin flash($color) {
   background-color: $color;
@@ -17,22 +22,22 @@ $failure-color: #f00;
 }
 
 body {
-  color: 	#383838;
-  background-color: #f5f5f5;
+  background-color: $off-white;
   background-image: url('public/purple-grapes-553462_1280.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  color: $grey;
 }
 
 .form-control-credentials {
-  width: 60%;
-  margin-right: auto;
+  background-color: $off-white;
   margin-left: auto;
-  background-color: #f5f5f5;
+  margin-right: auto;
+  width: 60%;
 }
 
 .form-wrapper {
-  background-color: white;
+  background-color: $white;
   border-radius: 5px;
 }
 
@@ -41,14 +46,14 @@ body {
 }
 
 .container-sign-up-in {
-  padding-top: 40px;
   padding-bottom: 40px;
+  padding-top: 40px;
 }
 
 .box-wines {
-  width: 900px;
   display: flex;
   flex-flow: row wrap;
+  width: 900px;
 }
 
 .card-wine {
@@ -56,7 +61,13 @@ body {
 }
 
 .btn-wines-index {
+  background-color: $grape-light;
+  border: 0;
   width: 300px;
+
+  &:hover {
+    background-color: $grape-dark;
+  }
 }
 
 .wine-img {
